@@ -204,3 +204,38 @@ class Solution {
 
 var solution = Solution()
 solution.isPalindrome(123)
+
+// Total amount of array of numbers by using recursion
+
+if true {
+    var array = [1, 2, 4, 5, 49]
+    var totalNumber = 0
+    
+    func getTotalNumber(){
+        if array.count != 0 {
+            totalNumber += array[0]
+            array.remove(at: 0)
+            getTotalNumber()
+        } else {
+            print(totalNumber, array)
+        }
+    }
+    getTotalNumber()
+}
+
+// Write a recursive function to count the number of items in list
+if true {
+    var array = [1, 2, 4, 5, 49, 3, 4]
+    var totalNumberOfItems = 0
+    
+    func getTotalNumberOfItems(){
+        if array.count != 0 {
+            totalNumberOfItems += 1
+            array.remove(at: 0)
+            getTotalNumberOfItems()
+        } else {
+            print(totalNumberOfItems)
+        }
+    }
+    getTotalNumberOfItems()
+}
