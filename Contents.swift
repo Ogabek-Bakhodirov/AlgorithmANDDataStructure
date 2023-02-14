@@ -239,3 +239,85 @@ if true {
     }
     getTotalNumberOfItems()
 }
+
+// Find max number in list
+if true {
+    var maxNumber = 0
+    var array = [1, 2, 4, 5, 94, 3, 4, 98]
+    
+    func identifyMaxValue(){
+        if array.count != 0 {
+            if maxNumber < array[0] {
+                maxNumber = array[0]
+            }
+            array.remove(at: 0)
+            identifyMaxValue()
+        } else {
+            print(maxNumber)
+        }
+    }
+    identifyMaxValue()
+}
+
+
+
+//Yandex Contest
+import UIKit
+
+class ViewController: UIViewController {
+    
+    func setup(){
+        let v1 = UIView(frame: .zero)
+        v1.frame = CGRect(x: 10, y: 10, width: 300, height: 300)
+        v1.backgroundColor = .blue
+        self.view.addSubview(v1)
+        
+        let v2 = UIView(frame: .zero)
+        v2.frame = CGRect(x: 100, y: 10, width: 150, height: 150)
+        v2.backgroundColor = .red
+        v1.addSubview(v2)
+        
+        let v3 = UIView(frame: .zero)
+        v3.frame = CGRect(x: 10, y: 100, width: 150, height: 150)
+        v3.backgroundColor = .green
+        v1.addSubview(v3)
+        
+        let v4 = UIView(frame: .zero)
+        v4.frame = CGRect(x: 10, y: 10, width: 20, height: 20)
+        v4.backgroundColor = .yellow
+        v4.transform = CGAffineTransform(scaleX: 1, y: 1)
+        v1.addSubview(v4)
+    }
+}
+
+var viewController = ViewController()
+viewController.setup()
+
+// Quicksort
+func quicksort(array: [Int]) -> [Int] {
+    var sortedArray = array
+    if sortedArray.count < 2 {
+        return sortedArray
+    } else if sortedArray.count == 2 {
+        if sortedArray[0] > sortedArray[1] {
+            var swappedElement = 0
+            swappedElement = sortedArray[0]
+            sortedArray[0] = sortedArray[1]
+            sortedArray[1] = swappedElement
+        }
+        return sortedArray
+    } else {
+        var pivot: [Int] = []
+        pivot.append(sortedArray[0])
+        var less: [Int] = []
+        var great: [Int] = []
+        for i in 1...sortedArray.count-1{
+            sortedArray[i] < pivot[0] ? less.append(sortedArray[i]) : great.append(sortedArray[i])
+        }
+        return quicksort(array: less) + pivot + quicksort(array: great)
+    }
+    return sortedArray
+}
+
+var quicksort = [6, 4, 7 , 3, 19, 2, 1]
+quicksort(array: quicksort)
