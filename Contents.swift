@@ -316,8 +316,72 @@ func quicksort(array: [Int]) -> [Int] {
         }
         return quicksort(array: less) + pivot + quicksort(array: great)
     }
-    return sortedArray
 }
 
-var quicksort = [6, 4, 7 , 3, 19, 2, 1]
+var quicksort = [6, 4, 7 , 3, 19, 2, 1, 3, 12, 21, 65]
 quicksort(array: quicksort)
+
+
+final class BankAccount: Hashable{
+    let id: String
+    var amount: Int
+    var isFrozen: Bool
+    var hashValue: Int {
+        return id.hashValue
+    }
+    
+    init(id: String, amount: Int, isFrozen: Bool) {
+        self.id = id
+        self.amount = amount
+        self.isFrozen = isFrozen
+    }
+    
+    static func == (lhs: BankAccount, rhs: BankAccount) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+}
+
+func transfer(from: BankAccount, to: BankAccount, amount: Int) {
+   from.amount -= amount
+   to.amount += amount
+}
+
+var list: Set<BankAccount> = [BankAccount(id: "1", amount: 200, isFrozen: true),
+BankAccount(id: "2", amount: 3, isFrozen: false)]
+
+var foo1: NSObject!
+foo1 = NSObject()
+var foo2: NSObject = foo1
+
+final class A {
+    private let view = UIView()
+    
+    deinit {
+        view.removeFromSuperview()
+    }
+}
+
+final class B {
+    private let backgroundQueue = DispatchQueue(label: "some queue")
+        
+    func doSmth(completion: @escaping () -> Void) {
+        backgroundQueue.async{
+            // do some work
+            DispatchQueue.main.async {
+                completion()
+            }
+        }
+    }
+}
+
+final class C {
+    private let b = B()
+    private var a: A? = A()
+        
+    func doTheJob() {
+        b.doSmth { [a] in
+            print(String(describing: a!))
+        }
+        a = nil
+    }
+}
