@@ -322,6 +322,7 @@ var quicksort = [6, 4, 7 , 3, 19, 2, 1, 3, 12, 21, 65]
 quicksort(array: quicksort)
 
 
+//Yandex task
 final class BankAccount: Hashable{
     let id: String
     var amount: Int
@@ -353,35 +354,37 @@ var foo1: NSObject!
 foo1 = NSObject()
 var foo2: NSObject = foo1
 
-final class A {
-    private let view = UIView()
-    
-    deinit {
-        view.removeFromSuperview()
-    }
-}
+//Leet Code - Search Insert Position
 
-final class B {
-    private let backgroundQueue = DispatchQueue(label: "some queue")
-        
-    func doSmth(completion: @escaping () -> Void) {
-        backgroundQueue.async{
-            // do some work
-            DispatchQueue.main.async {
-                completion()
+if true {
+    class Solution {
+        func searchInsert(_ nums: [Int], _ target: Int) -> Int {
+            for (index, element) in nums.enumerated() {
+                if element == target {
+                    print(index, element)
+                    return index
+                } 
             }
+            
+            
+            return findEstimatetIndex(nums, target)
+        }
+        
+        func findEstimatetIndex(_ nums: [Int], _ target: Int) -> Int{
+            var elementIndex = 0
+            var lessThanTarget = -9999999
+            for (index, element) in nums.enumerated() {
+                if element < target && element > lessThanTarget {
+                    lessThanTarget = element
+                    elementIndex = index + 1
+                }
+            }
+            return elementIndex
         }
     }
+
+    var solution = Solution()
+    solution.searchInsert([-1, 2, 4, 5], 0)
 }
 
-final class C {
-    private let b = B()
-    private var a: A? = A()
-        
-    func doTheJob() {
-        b.doSmth { [a] in
-            print(String(describing: a!))
-        }
-        a = nil
-    }
-}
+
