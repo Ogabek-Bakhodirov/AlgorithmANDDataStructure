@@ -152,7 +152,7 @@ func countNumber(_ x: Int) -> Int {
 countNumber(100)
 
 
-// isPalindrome solved without converting into string
+// Leet Code - isPalindrome solved without converting into string
 class Solution {
     func isPalindrome(_ x: Int) -> Bool {
         var xNumber = x
@@ -354,8 +354,8 @@ var foo1: NSObject!
 foo1 = NSObject()
 var foo2: NSObject = foo1
 
-//Leet Code - Search Insert Position
 
+//Leet Code - Search Insert Position
 if true {
     class Solution {
         func searchInsert(_ nums: [Int], _ target: Int) -> Int {
@@ -385,6 +385,23 @@ if true {
 
     var solution = Solution()
     solution.searchInsert([-1, 2, 4, 5], 0)
+}
+
+
+// Leet Code - Two Sum
+if true {
+    class Solution {
+        func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
+            for num in 0...nums.count - 1 {
+                for innerNum in num+1...nums.count - 1 {
+                    if nums[num] + nums[innerNum] == target {
+                        return [num, innerNum]
+                    }
+                }
+            }
+            return [0]
+        }
+    }
 }
 
 
